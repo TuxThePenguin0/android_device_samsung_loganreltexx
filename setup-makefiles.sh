@@ -1,4 +1,5 @@
 export DEVICE=loganreltexx
+export VENDOR=samsung
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 
