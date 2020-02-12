@@ -162,7 +162,8 @@ PRODUCT_PACKAGES += \
 # Ubuntu Overlay Files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/70-android.rules:system/halium/lib/udev/rules.d/70-android.rules \
-    $(LOCAL_PATH)/ubuntu/android.conf:system/halium/etc/ubuntu-touch-session.d/android.conf
+    $(LOCAL_PATH)/ubuntu/android.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
+    $(LOCAL_PATH)/ubuntu/init_hcismd_up.sh:system/etc/init_hcismd_up.sh
 
 # call common loganre system props
 $(call inherit-product, device/samsung/loganreltexx/system_prop.mk)
