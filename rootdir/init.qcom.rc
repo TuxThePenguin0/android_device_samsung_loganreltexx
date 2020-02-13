@@ -211,9 +211,11 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     oneshot
 
 on property:bluetooth.hciattach=true
+    write /sys/module/hci_smd/parameters/hcismd_set 1
     start hciattach
 
 on property:bluetooth.hciattach=false
+    write /sys/module/hci_smd/parameters/hcismd_set 0
     setprop bluetooth.status off
 
 # QMUX must be in multiple groups to support external process connections
@@ -294,6 +296,12 @@ on property:persist.sys.ssr.restart_level=1
     write /sys/module/subsystem_restart/parameters/restart_level 1
 on property:persist.sys.ssr.restart_level=3
     write /sys/module/subsystem_restart/parameters/restart_level 3
+    
+service init_wlan_bt /system/bin/sh /system/etc/init_hcismd_up.sh
+    class main
+    user root
+    group root
+    oneshot
 
 on property:sys.boot_completed=1
     start qcom-audio
